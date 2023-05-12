@@ -28,3 +28,9 @@ extension View {
 		self.modifier(roundedItem())
 	}
 }
+
+extension Color {
+	static var fieldColor: Color {
+		return Color(UIColor.secondarySystemBackground)
+	}
+}

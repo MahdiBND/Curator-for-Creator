@@ -19,7 +19,11 @@
 		4861B63B2A0E3F96002DD233 /* OnboardingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B63A2A0E3F96002DD233 /* OnboardingVM.swift */; };
 		4861B63E2A0E440F002DD233 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B63D2A0E440F002DD233 /* LoginView.swift */; };
 		4861B6402A0E496B002DD233 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B63F2A0E496B002DD233 /* LoginVM.swift */; };
-		4861B6422A0E5665002DD233 /* View Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B6412A0E5665002DD233 /* View Modifiers.swift */; };
+		4861B6422A0E5665002DD233 /* View Modifiers+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B6412A0E5665002DD233 /* View Modifiers+Extensions.swift */; };
+		4861B6442A0E7B26002DD233 /* ContentDiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B6432A0E7B25002DD233 /* ContentDiscoveryView.swift */; };
+		4861B6462A0E7CDA002DD233 /* Circular Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B6452A0E7CDA002DD233 /* Circular Progress.swift */; };
+		4861B6492A0E81EE002DD233 /* Content Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B6482A0E81EE002DD233 /* Content Categories.swift */; };
+		4861B64D2A0E8714002DD233 /* SwiftUIMasonry in Frameworks */ = {isa = PBXBuildFile; productRef = 4861B64C2A0E8714002DD233 /* SwiftUIMasonry */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +59,10 @@
 		4861B63A2A0E3F96002DD233 /* OnboardingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVM.swift; sourceTree = "<group>"; };
 		4861B63D2A0E440F002DD233 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4861B63F2A0E496B002DD233 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
-		4861B6412A0E5665002DD233 /* View Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Modifiers.swift"; sourceTree = "<group>"; };
+		4861B6412A0E5665002DD233 /* View Modifiers+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Modifiers+Extensions.swift"; sourceTree = "<group>"; };
+		4861B6432A0E7B25002DD233 /* ContentDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDiscoveryView.swift; sourceTree = "<group>"; };
+		4861B6452A0E7CDA002DD233 /* Circular Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Circular Progress.swift"; sourceTree = "<group>"; };
+		4861B6482A0E81EE002DD233 /* Content Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Content Categories.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4861B64D2A0E8714002DD233 /* SwiftUIMasonry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +117,8 @@
 				4861B6382A0E3F51002DD233 /* Global */,
 				4861B6392A0E3F64002DD233 /* Views */,
 				4861B63C2A0E3FA7002DD233 /* View Models */,
+				4861B6472A0E7CE2002DD233 /* Custom Views */,
+				4861B64A2A0E81F3002DD233 /* Models */,
 				4861B60E2A0D1160002DD233 /* Assets.xcassets */,
 				4861B6102A0D1160002DD233 /* Preview Content */,
 			);
@@ -145,7 +155,7 @@
 			children = (
 				4861B60A2A0D115D002DD233 /* Curator_for_CreatorApp.swift */,
 				4861B6362A0D3FC4002DD233 /* Constants.swift */,
-				4861B6412A0E5665002DD233 /* View Modifiers.swift */,
+				4861B6412A0E5665002DD233 /* View Modifiers+Extensions.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -154,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				4861B6342A0D3986002DD233 /* OnboardingView.swift */,
+				4861B6432A0E7B25002DD233 /* ContentDiscoveryView.swift */,
 				4861B63D2A0E440F002DD233 /* LoginView.swift */,
 				4861B60C2A0D115D002DD233 /* ContentView.swift */,
 			);
@@ -167,6 +178,22 @@
 				4861B63F2A0E496B002DD233 /* LoginVM.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		4861B6472A0E7CE2002DD233 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				4861B6452A0E7CDA002DD233 /* Circular Progress.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		4861B64A2A0E81F3002DD233 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4861B6482A0E81EE002DD233 /* Content Categories.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +212,9 @@
 			dependencies = (
 			);
 			name = "Curator for Creator";
+			packageProductDependencies = (
+				4861B64C2A0E8714002DD233 /* SwiftUIMasonry */,
+			);
 			productName = "Curator for Creator";
 			productReference = 4861B6072A0D115D002DD233 /* Curator for Creator.app */;
 			productType = "com.apple.product-type.application";
@@ -257,6 +287,9 @@
 				Base,
 			);
 			mainGroup = 4861B5FE2A0D115C002DD233;
+			packageReferences = (
+				4861B64B2A0E8714002DD233 /* XCRemoteSwiftPackageReference "SwiftUIMasonry" */,
+			);
 			productRefGroup = 4861B6082A0D115D002DD233 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -299,12 +332,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4861B6442A0E7B26002DD233 /* ContentDiscoveryView.swift in Sources */,
 				4861B6402A0E496B002DD233 /* LoginVM.swift in Sources */,
+				4861B6462A0E7CDA002DD233 /* Circular Progress.swift in Sources */,
 				4861B63E2A0E440F002DD233 /* LoginView.swift in Sources */,
 				4861B6352A0D3986002DD233 /* OnboardingView.swift in Sources */,
 				4861B63B2A0E3F96002DD233 /* OnboardingVM.swift in Sources */,
-				4861B6422A0E5665002DD233 /* View Modifiers.swift in Sources */,
+				4861B6422A0E5665002DD233 /* View Modifiers+Extensions.swift in Sources */,
 				4861B60D2A0D115D002DD233 /* ContentView.swift in Sources */,
+				4861B6492A0E81EE002DD233 /* Content Categories.swift in Sources */,
 				4861B60B2A0D115D002DD233 /* Curator_for_CreatorApp.swift in Sources */,
 				4861B6372A0D3FC4002DD233 /* Constants.swift in Sources */,
 			);
@@ -633,6 +669,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4861B64B2A0E8714002DD233 /* XCRemoteSwiftPackageReference "SwiftUIMasonry" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ciaranrobrien/SwiftUIMasonry";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4861B64C2A0E8714002DD233 /* SwiftUIMasonry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4861B64B2A0E8714002DD233 /* XCRemoteSwiftPackageReference "SwiftUIMasonry" */;
+			productName = SwiftUIMasonry;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4861B5FF2A0D115C002DD233 /* Project object */;
 }
