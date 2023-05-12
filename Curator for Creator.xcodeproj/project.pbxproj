@@ -24,6 +24,8 @@
 		4861B6462A0E7CDA002DD233 /* Circular Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B6452A0E7CDA002DD233 /* Circular Progress.swift */; };
 		4861B6492A0E81EE002DD233 /* Content Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B6482A0E81EE002DD233 /* Content Categories.swift */; };
 		4861B64D2A0E8714002DD233 /* SwiftUIMasonry in Frameworks */ = {isa = PBXBuildFile; productRef = 4861B64C2A0E8714002DD233 /* SwiftUIMasonry */; };
+		4861B64F2A0E943A002DD233 /* ContentDiscoveryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B64E2A0E943A002DD233 /* ContentDiscoveryVM.swift */; };
+		4861B6512A0E9653002DD233 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4861B6502A0E9653002DD233 /* CategoryItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		4861B6432A0E7B25002DD233 /* ContentDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDiscoveryView.swift; sourceTree = "<group>"; };
 		4861B6452A0E7CDA002DD233 /* Circular Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Circular Progress.swift"; sourceTree = "<group>"; };
 		4861B6482A0E81EE002DD233 /* Content Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Content Categories.swift"; sourceTree = "<group>"; };
+		4861B64E2A0E943A002DD233 /* ContentDiscoveryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDiscoveryVM.swift; sourceTree = "<group>"; };
+		4861B6502A0E9653002DD233 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,9 +167,7 @@
 		4861B6392A0E3F64002DD233 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4861B6342A0D3986002DD233 /* OnboardingView.swift */,
-				4861B6432A0E7B25002DD233 /* ContentDiscoveryView.swift */,
-				4861B63D2A0E440F002DD233 /* LoginView.swift */,
+				4861B6522A0E9731002DD233 /* Login Flow */,
 				4861B60C2A0D115D002DD233 /* ContentView.swift */,
 			);
 			path = Views;
@@ -176,6 +178,7 @@
 			children = (
 				4861B63A2A0E3F96002DD233 /* OnboardingVM.swift */,
 				4861B63F2A0E496B002DD233 /* LoginVM.swift */,
+				4861B64E2A0E943A002DD233 /* ContentDiscoveryVM.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				4861B6452A0E7CDA002DD233 /* Circular Progress.swift */,
+				4861B6502A0E9653002DD233 /* CategoryItem.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -194,6 +198,16 @@
 				4861B6482A0E81EE002DD233 /* Content Categories.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4861B6522A0E9731002DD233 /* Login Flow */ = {
+			isa = PBXGroup;
+			children = (
+				4861B6342A0D3986002DD233 /* OnboardingView.swift */,
+				4861B6432A0E7B25002DD233 /* ContentDiscoveryView.swift */,
+				4861B63D2A0E440F002DD233 /* LoginView.swift */,
+			);
+			path = "Login Flow";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,12 +347,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4861B6442A0E7B26002DD233 /* ContentDiscoveryView.swift in Sources */,
+				4861B64F2A0E943A002DD233 /* ContentDiscoveryVM.swift in Sources */,
 				4861B6402A0E496B002DD233 /* LoginVM.swift in Sources */,
 				4861B6462A0E7CDA002DD233 /* Circular Progress.swift in Sources */,
 				4861B63E2A0E440F002DD233 /* LoginView.swift in Sources */,
 				4861B6352A0D3986002DD233 /* OnboardingView.swift in Sources */,
 				4861B63B2A0E3F96002DD233 /* OnboardingVM.swift in Sources */,
 				4861B6422A0E5665002DD233 /* View Modifiers+Extensions.swift in Sources */,
+				4861B6512A0E9653002DD233 /* CategoryItem.swift in Sources */,
 				4861B60D2A0D115D002DD233 /* ContentView.swift in Sources */,
 				4861B6492A0E81EE002DD233 /* Content Categories.swift in Sources */,
 				4861B60B2A0D115D002DD233 /* Curator_for_CreatorApp.swift in Sources */,
