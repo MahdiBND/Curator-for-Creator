@@ -68,9 +68,27 @@ struct LoginView: View {
 						.foregroundColor(.primary)
 				}
 			}
+			
+			Button(action: login) {
+				Text("Login")
+					.bold()
+					.frame(maxWidth: .infinity)
+					.roundedBorder()
+					.padding(.vertical)
+			}
 		}
 		.padding(30)
     }
+	
+	func login() {
+		do {
+			try viewModel.login()
+				// Do anything else that needs to be done.
+		} catch {
+			print(error)
+			// Show error feedback to user
+		}
+	}
 }
 
 struct LoginView_Previews: PreviewProvider {
