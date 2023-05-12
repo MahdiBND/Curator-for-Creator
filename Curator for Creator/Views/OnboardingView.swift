@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct OnboardingView: View {
+	@StateObject private var viewModel = OnboardingVM()
 	var body: some View {
 		VStack(spacing: 16) {
 			
-			Button(action: {}) {
+			Button(action: {
+				viewModel.showLogin.toggle()
+			}) {
 				Text("Login")
 					.foregroundColor(.primary)
 					.padding()
@@ -20,14 +23,24 @@ struct OnboardingView: View {
 					.cornerRadius(Constants.cornerRadius)
 					.padding(.horizontal, 30)
 			}
+			// TODO: open login view
+			.sheet(isPresented: $viewModel.showLogin) {
+				EmptyView()
+			}
 			
 			HStack {
 				Text("Don't have an account?")
 					.foregroundColor(.secondary)
-				Button(action: {}) {
+				Button(action: {
+					viewModel.showSignup.toggle()
+				}) {
 					Text("Sign Up")
 						.foregroundColor(.primary)
 				}
+			}
+				// TODO: open signup view
+			.sheet(isPresented: $viewModel.showSignup) {
+				EmptyView()
 			}
 		}
 	}
