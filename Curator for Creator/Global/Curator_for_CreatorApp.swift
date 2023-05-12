@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct Curator_for_CreatorApp: App {
+	var userData = UserData()
+	
+	init() {
+		launchOptions()
+	}
+	
+	func launchOptions() {
+		userData.launchOptions()
+	}
+	
     var body: some Scene {
         WindowGroup {
             ContentView()
+				.environmentObject(userData)
         }
     }
 }
