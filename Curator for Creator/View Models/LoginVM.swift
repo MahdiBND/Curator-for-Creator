@@ -12,17 +12,26 @@ enum LoginError: Error {
   case formIsEmpty, usernameIsEmpty, passwordIsEmpty
 }
 
-class LoginVM: ObservableObject {
+class LoginVM<Store>: ObservableObject where Store: PreferenceStorable {
 	@Published var email = ""
 	@Published var password = ""
+	var store: Store
+	
+	init(store: Store = PreferenceStore() as! Store) {
+		self.store = store
+	}
 	
 	func login() throws {
 		if self.email == "" && self.password == "" {
 			throw LoginError.formIsEmpty
 		} else if self.email == "" {
 			throw LoginError.usernameIsEmpty
-		} else {
+		} else if password == "" {
 			throw LoginError.passwordIsEmpty
+		} else {
+				// now that there is no problem, attempt login
+				// for now just accept any user & pass
+			store.loginPreference = true
 		}
 	}
 }

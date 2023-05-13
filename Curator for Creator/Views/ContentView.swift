@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-	@EnvironmentObject var userData: UserData
+	@EnvironmentObject var userData: UserData<PreferenceStore>
 	
     var body: some View {
 		if userData.loggedIn {

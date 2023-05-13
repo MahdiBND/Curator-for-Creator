@@ -6,21 +6,28 @@
 //
 
 import Foundation
+import Combine
 
-class UserData: ObservableObject {
-	@Published var user = User()
-	@Published var loggedIn = false
+class UserData<Store>: ObservableObject where Store: PreferenceStorable {
+	private let user: User
+	private var store: Store
+	private var tasks: Set<AnyCancellable> = []
 	
-	var defaults = UserDefaults.standard
-	
-	func loginSetup() {
-		defaults.set(true, forKey: "login")
-		DispatchQueue.main.async {
-			self.loggedIn = true
+	init(user: User, store: Store) {
+		self.user = user
+		self.store = store
+		
+		store.objectWillChange.sink { _ in
+		  self.objectWillChange.send()
 		}
+		.store(in: &tasks)
 	}
 	
-	func launchOptions() {
-		loggedIn = defaults.bool(forKey: "login")
+	var favoriteCategories: [Category] {
+		store.favoriteCategoriesPreference
+	}
+	
+	var loggedIn: Bool {
+		store.loginPreference
 	}
 }

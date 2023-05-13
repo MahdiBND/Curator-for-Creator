@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-	@StateObject var viewModel = LoginVM()
+	@StateObject var viewModel = LoginVM<PreferenceStore>()
 	let imageSize: CGFloat = 120
 	
     var body: some View {

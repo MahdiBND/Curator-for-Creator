@@ -10,7 +10,7 @@ import XCTest
 
 class Curator_for_CreatorTests: XCTestCase {
 
-	var loginViewModel: LoginVM!
+	var loginViewModel: LoginVM<PreferenceStore>!
 	
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -43,7 +43,7 @@ class Curator_for_CreatorTests: XCTestCase {
 		}
 	}
 	
-	func testEmptyPasswordThrowsError() {
+	func testEmptyPasswordThrowsError() throws {
 		loginViewModel.email = "email"
 		XCTAssert(loginViewModel.password.isEmpty)
 		XCTAssertThrowsError(try loginViewModel.login()) { error in
@@ -52,6 +52,21 @@ class Curator_for_CreatorTests: XCTestCase {
 				return
 			}
 		}
+	}
+	
+	func testLoginAttemptSavesToStorage() throws {
+		loginViewModel.email = "admin"
+		loginViewModel.password = "password"
+		
+		let data = UserData(user: User(), store: PreferenceStore())
+		try loginViewModel.login()
+		XCTAssert(data.loggedIn == true)
+		// It does.
+	}
+	
+	func testAppLaunchReadsFromStorage() throws {
+		let data = UserData(user: User(), store: PreferenceStore())
+		XCTAssert(data.loggedIn == true)
 	}
 
 //    func testPerformanceExample() throws {
