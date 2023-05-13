@@ -7,20 +7,23 @@
 
 import Foundation
 
-class ContentDiscoveryVM: ObservableObject {
-	@Published var selectedItems = [Category]()
+class ContentDiscoveryVM<Store> where Store: PreferenceStorable  {
+	private var store: Store
 	
+	init(store: Store) {
+		self.store = store
+	}
 	
 	func isSelected(_ item: Category) -> Bool {
-		return selectedItems.contains(item)
+		return store.favoriteCategoriesPreference.contains(item)
 	}
 	
 	// Select or deselect category items
 	func toggleItem(_ category: Category) {
 		if !isSelected(category) {
-			selectedItems.append(category)
+			store.favoriteCategoriesPreference.append(category)
 		} else {
-			selectedItems.removeAll { cat in
+			store.favoriteCategoriesPreference.removeAll { cat in
 				category.id == cat.id
 			}
 		}

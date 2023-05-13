@@ -15,7 +15,7 @@ enum LoginError: Error {
 class LoginVM<Store>: ObservableObject where Store: PreferenceStorable {
 	@Published var email = ""
 	@Published var password = ""
-	var store: Store
+	private var store: Store
 	
 	init(store: Store = PreferenceStore() as! Store) {
 		self.store = store

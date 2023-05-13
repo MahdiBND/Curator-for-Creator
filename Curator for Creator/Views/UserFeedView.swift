@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserFeedView: View {
-	@State var searchTerm = ""
+	@StateObject var viewModel = UserFeedVM(store: PreferenceStore())
 	
     var body: some View {
 		NavigationView {
@@ -21,7 +21,7 @@ struct UserFeedView: View {
 			}
 			.navigationTitle("Categories")
 			.navigationBarTitleDisplayMode(.inline)
-			.searchable(text: $searchTerm)
+			.searchable(text: $viewModel.searchTerm)
 			.toolbar {
 				ToolbarItem(placement: .navigationBarLeading) {
 					Image(systemName: "circle.grid.3x3.fill")
