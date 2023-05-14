@@ -77,20 +77,3 @@ struct Tabbar_Previews: PreviewProvider {
 			.preferredColorScheme(.dark)
 	}
 }
-
-struct TestTabs: View {
-	let items = testCategories.map { $0.name }
-	
-	var body: some View {
-		NavigationView {
-			ScrollView {
-				LazyVStack {
-					TabBarView(provider: TabBarVM(items: items))
-					Image("team")
-				}
-			}
-			.navigationTitle("Categories")
-			.navigationBarTitleDisplayMode(.inline)
-		}
-	}
-}
