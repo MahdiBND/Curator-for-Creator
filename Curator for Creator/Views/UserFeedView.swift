@@ -7,21 +7,24 @@
 
 import SwiftUI
 
-struct UserFeedView: View {
-	@StateObject var viewModel = UserFeedVM(store: PreferenceStore())
+struct UserFeedView<Provider>: View where Provider: FeedContentProvidable {
+	@ObservedObject private var provider: Provider
+	
+	init(provider: Provider = UserFeedVM() as! Provider) {
+		self.provider = provider
+	}
 	
     var body: some View {
 		NavigationView {
 			ScrollView {
-				// TODO: make dynamic
-				ForEach(1..<10) { _ in
-					FeedItemView(item: mockFeedItem)
-						.padding(14)
+				LazyVStack {
+					TabBarView(provider: TabBarVM(items: provider.names))
+					provider.postView
 				}
 			}
 			.navigationTitle("Categories")
 			.navigationBarTitleDisplayMode(.inline)
-			.searchable(text: $viewModel.searchTerm)
+			.searchable(text: $provider.searchTerm)
 			.toolbar {
 				ToolbarItem(placement: .navigationBarLeading) {
 					Image(systemName: "circle.grid.3x3.fill")
@@ -35,7 +38,7 @@ struct UserFeedView: View {
 
 struct UserFeedView_Previews: PreviewProvider {
     static var previews: some View {
-        UserFeedView()
+        UserFeedView(provider: MockUserFeed())
 			.preferredColorScheme(.dark)
     }
 }

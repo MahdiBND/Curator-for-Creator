@@ -7,8 +7,12 @@
 
 import Foundation
 
-class ContentDiscoveryVM<Store> where Store: PreferenceStorable  {
+class ContentDiscoveryVM<Store>: ObservableObject where Store: PreferenceStorable  {
 	private var store: Store
+	
+	var selectedItems: [Category] {
+		store.favoriteCategoriesPreference
+	}
 	
 	init(store: Store) {
 		self.store = store
@@ -21,11 +25,19 @@ class ContentDiscoveryVM<Store> where Store: PreferenceStorable  {
 	// Select or deselect category items
 	func toggleItem(_ category: Category) {
 		if !isSelected(category) {
-			store.favoriteCategoriesPreference.append(category)
+			select(category)
 		} else {
-			store.favoriteCategoriesPreference.removeAll { cat in
-				category.id == cat.id
-			}
+			remove(category)
+		}
+	}
+	
+	private func select(_ category: Category) {
+		store.favoriteCategoriesPreference.append(category)
+	}
+	
+	private func remove(_ category: Category) {
+		store.favoriteCategoriesPreference.removeAll { cat in
+			category.id == cat.id
 		}
 	}
 }

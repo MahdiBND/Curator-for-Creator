@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIMasonry
 
 struct ContentDiscoveryView: View {
-	@StateObject var viewModel = ContentDiscoveryVM()
+	@StateObject var viewModel = ContentDiscoveryVM(store: PreferenceStore())
 	
 	let column = [GridItem(.flexible()),
 				  GridItem(.flexible())]
