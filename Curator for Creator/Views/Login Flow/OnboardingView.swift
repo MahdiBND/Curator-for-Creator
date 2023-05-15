@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
+	@EnvironmentObject var userData: UserData<PreferenceStore>
 	@StateObject private var viewModel = OnboardingVM()
 	var body: some View {
 		VStack(spacing: 20) {
@@ -24,8 +25,13 @@ struct OnboardingView: View {
 					.cornerRadius(Constants.cornerRadius)
 					.padding(.horizontal, 30)
 			}
-			.sheet(isPresented: $viewModel.showLogin) {
+			.sheet(isPresented: $viewModel.showLogin, onDismiss: {
+				if userData.isLoggedIn {
+					viewModel.showDiscovery = true					
+				}
+			}) {
 				LoginView()
+					.environmentObject(userData)
 			}
 			
 			HStack {
@@ -41,11 +47,16 @@ struct OnboardingView: View {
 				// TODO: open signup view
 			.sheet(isPresented: $viewModel.showSignup) {
 				EmptyView()
+					.environmentObject(userData)
 			}
 		}
 		.frame(maxHeight: .infinity, alignment: .bottom)
 		.background(Image("background"))
 		.padding(.bottom, 50)
+		.sheet(isPresented: $viewModel.showDiscovery) {
+			ContentDiscoveryView()
+				.environmentObject(userData)
+		}
 	}
 }
 

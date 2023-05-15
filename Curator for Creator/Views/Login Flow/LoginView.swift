@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+	@Environment(\.dismiss) var dismiss
 	@StateObject var viewModel = LoginVM<PreferenceStore>()
 	let imageSize: CGFloat = 120
 	
@@ -84,6 +85,7 @@ struct LoginView: View {
 		do {
 			try viewModel.login()
 				// Do anything else that needs to be done.
+			self.dismiss.callAsFunction()
 		} catch {
 			print(error)
 			// Show error feedback to user

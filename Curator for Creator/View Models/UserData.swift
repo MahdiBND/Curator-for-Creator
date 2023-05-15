@@ -13,9 +13,12 @@ class UserData<Store>: ObservableObject where Store: PreferenceStorable {
 	private var store: Store
 	private var tasks: Set<AnyCancellable> = []
 	
+	@Published var isLoggedIn = false
+	
 	init(user: User, store: Store) {
 		self.user = user
 		self.store = store
+		self.isLoggedIn = store.loginPreference
 		
 		store.objectWillChange.sink { _ in
 		  self.objectWillChange.send()
@@ -28,6 +31,11 @@ class UserData<Store>: ObservableObject where Store: PreferenceStorable {
 	}
 	
 	var loggedIn: Bool {
-		store.loginPreference
+		isLoggedIn = store.loginPreference
+		return isLoggedIn
+	}
+	
+	func logout() {
+		store.loginPreference = false
 	}
 }

@@ -60,7 +60,7 @@ class Curator_for_CreatorTests: XCTestCase {
 		
 		let data = UserData(user: User(), store: PreferenceStore())
 		try loginViewModel.login()
-		XCTAssert(data.loggedIn == true)
+		XCTAssert(data.isLoggedIn == true)
 		// It does.
 	}
 	

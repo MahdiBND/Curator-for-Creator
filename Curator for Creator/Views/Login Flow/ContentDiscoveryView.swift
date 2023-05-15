@@ -9,15 +9,15 @@ import SwiftUI
 import SwiftUIMasonry
 
 struct ContentDiscoveryView: View {
+	@Environment(\.dismiss) var dismiss
 	@StateObject var viewModel = ContentDiscoveryVM(store: PreferenceStore())
 	
 	let column = [GridItem(.flexible()),
 				  GridItem(.flexible())]
 	
     var body: some View {
-		@State var count = CGFloat(viewModel.selectedItems.count)
-		return	VStack {
-			CircularProgress(progress: $count)
+		VStack {
+			CircularProgress(progress: $viewModel.count)
 				.frame(width: 150, height: 150)
 			
 			Text("Choose contents you like")
@@ -35,37 +35,43 @@ struct ContentDiscoveryView: View {
 				.padding()
 			}
 			
-			LazyVGrid(columns: column, alignment: .leading) {
-				ForEach(testCategories) { category in
-					CategoryItem(category: category)
-						.overlay(RoundedRectangle(
-							cornerRadius: Constants.cornerRadius)
-									.stroke(.blue,
-											lineWidth: viewModel.isSelected(category) ? 1 : 0))
-						.onTapGesture {
-							viewModel.toggleItem(category)
-						}
+			ScrollView(showsIndicators: false) {
+				VMasonry(columns: 2) {
+					ForEach(testCategories) { category in
+						CategoryItem(category: category)
+							.overlay(RoundedRectangle(
+								cornerRadius: Constants.cornerRadius)
+										.stroke(.blue,
+												lineWidth: viewModel.isSelected(category) ? 1 : 0))
+							.onTapGesture {
+								viewModel.toggleItem(category)
+							}
 					}
+				}
+				.padding(.horizontal)
 			}
-			.padding()
 			
-			Button(action: {}) {
+			Button(action: goToApp) {
 				Text("Continue")
 					.frame(maxWidth: .infinity)
 					.roundedBorder()
 			}
-			.disabled(count < 5) // User should select at least 5 items
+			.disabled(viewModel.count < 5) // User should select at least 5 items
 			.padding()
 		}
 		.animation(.easeOut, value: viewModel.selectedItems)
     }
 	
-	
+	private func goToApp() {
+		viewModel.saveData()
+		dismiss.callAsFunction()
+	}
 }
 
 struct ContentDiscoveryView_Previews: PreviewProvider {
     static var previews: some View {
         ContentDiscoveryView()
 			.preferredColorScheme(.dark)
+//			.environmentObject(UserData(user: User(), store: PreferenceStore()))
     }
 }

@@ -5,21 +5,25 @@
 //  Created by Mahdi BND on 5/12/23.
 //
 
-import Foundation
+import SwiftUI
 
 class ContentDiscoveryVM<Store>: ObservableObject where Store: PreferenceStorable  {
 	private var store: Store
 	
-	var selectedItems: [Category] {
-		store.favoriteCategoriesPreference
+	@Published var selectedItems = [Category]() {
+		willSet {
+			self.count = CGFloat(newValue.count)
+		}
 	}
+	
+	@Published var count: CGFloat = 0
 	
 	init(store: Store) {
 		self.store = store
 	}
 	
 	func isSelected(_ item: Category) -> Bool {
-		return store.favoriteCategoriesPreference.contains(item)
+		return selectedItems.contains(item)
 	}
 	
 	// Select or deselect category items
@@ -31,12 +35,16 @@ class ContentDiscoveryVM<Store>: ObservableObject where Store: PreferenceStorabl
 		}
 	}
 	
+	func saveData() {
+		store.favoriteCategoriesPreference = selectedItems
+	}
+	
 	private func select(_ category: Category) {
-		store.favoriteCategoriesPreference.append(category)
+		selectedItems.append(category)
 	}
 	
 	private func remove(_ category: Category) {
-		store.favoriteCategoriesPreference.removeAll { cat in
+		selectedItems.removeAll { cat in
 			category.id == cat.id
 		}
 	}

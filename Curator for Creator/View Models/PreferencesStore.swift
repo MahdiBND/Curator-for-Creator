@@ -27,12 +27,16 @@ final class PreferenceStore: PreferenceStorable {
 	}
 		/// Automatically injects the type `T` which is provided in the function call, to be returned.
 		/// - Returns: Returns a value from `UserDefaults` for key, or return the `default` value if nothing found.
-	private static func value<T>(for key: PreferencesKeys, defaultValue: T) -> T {
-		UserDefaults.standard.value(forKey: key.rawValue) as? T ?? defaultValue
+	private static func value<T: Codable>(for key: PreferencesKeys, defaultValue: T) -> T {
+		guard let data = UserDefaults.standard.value(forKey: key.rawValue) as? Data,
+			  let value = try? JSONDecoder().decode(T.self, from: data)  else { return defaultValue }
+		return value
 	}
 	
-	private func set(value: Any, for key: PreferencesKeys) {
-		UserDefaults.standard.set(value, forKey: key.rawValue)
+	private func set<T: Codable>(value: T, for key: PreferencesKeys) {
+		if let encoded = try? JSONEncoder().encode(value) {
+			UserDefaults.standard.set(encoded, forKey: key.rawValue)
+		}
 	}
 	
 	func resetPreferences() {
