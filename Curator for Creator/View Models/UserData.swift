@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class UserData<Store>: ObservableObject where Store: PreferenceStorable {
 	private let user: User
@@ -23,6 +24,10 @@ class UserData<Store>: ObservableObject where Store: PreferenceStorable {
 		.store(in: &tasks)
 	}
 	
+	var showDiscovery: Bool {
+		favoriteCategories.isEmpty
+	}
+	
 	var favoriteCategories: [Category] {
 		store.favoriteCategoriesPreference
 	}
@@ -32,6 +37,9 @@ class UserData<Store>: ObservableObject where Store: PreferenceStorable {
 	}
 	
 	func logout() {
-		store.loginPreference = false
+		// Animate logout
+		withAnimation {
+			store.resetPreferences()			
+		}
 	}
 }

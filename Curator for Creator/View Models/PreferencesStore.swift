@@ -45,9 +45,14 @@ final class PreferenceStore: PreferenceStorable {
 	}
 	
 	func resetPreferences() {
-		let defaults = UserDefaults.standard
-		PreferencesKeys.allCases.forEach { setting in
-			defaults.removeObject(forKey: setting.rawValue)
+		loginPreference = false
+		favoriteCategoriesPreference = []
+		
+		DispatchQueue.global(qos: .background).async {
+			let defaults = UserDefaults.standard
+			PreferencesKeys.allCases.forEach { setting in
+				defaults.removeObject(forKey: setting.rawValue)
+			}
 		}
 	}
 }

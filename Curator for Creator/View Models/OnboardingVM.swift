@@ -10,5 +10,4 @@ import Foundation
 class OnboardingVM: ObservableObject {
 	@Published var showLogin = false
 	@Published var showSignup = false
-	@Published var showDiscovery = false
 }

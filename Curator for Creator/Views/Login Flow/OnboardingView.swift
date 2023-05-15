@@ -25,11 +25,7 @@ struct OnboardingView: View {
 					.cornerRadius(Constants.cornerRadius)
 					.padding(.horizontal, 30)
 			}
-			.sheet(isPresented: $viewModel.showLogin, onDismiss: {
-				if userData.loggedIn {
-					viewModel.showDiscovery = true					
-				}
-			}) {
+			.sheet(isPresented: $viewModel.showLogin) {
 				LoginView()
 					.environmentObject(userData)
 			}
@@ -53,10 +49,6 @@ struct OnboardingView: View {
 		.frame(maxHeight: .infinity, alignment: .bottom)
 		.background(Image("background"))
 		.padding(.bottom, 50)
-		.sheet(isPresented: $viewModel.showDiscovery) {
-			ContentDiscoveryView()
-				.environmentObject(userData)
-		}
 	}
 }
 

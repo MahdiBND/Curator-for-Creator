@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct UserFeedView<Provider>: View where Provider: FeedContentProvidable {
-	@EnvironmentObject var userData: UserData<PreferenceStore>
 	@ObservedObject private var provider: Provider
 	
 	init(provider: Provider = UserFeedVM() as! Provider) {

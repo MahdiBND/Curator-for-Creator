@@ -11,13 +11,18 @@ struct ContentView: View {
 	@EnvironmentObject var userData: UserData<PreferenceStore>
 	
 	var body: some View {
-		if userData.loggedIn {
-				// -test: change to real user feed.
-			UserFeedView(provider: MockUserFeed())
-				.environmentObject(userData)
-		} else {
-			OnboardingView()
-				.environmentObject(userData)
+		Group {
+			if userData.loggedIn {
+				if userData.showDiscovery {
+					ContentDiscoveryView()
+				} else {
+						// -test: change to real user feed.
+					UserFeedView(provider: MockUserFeed())
+				}
+			} else {
+				OnboardingView()
+					.environmentObject(userData)
+			}
 		}
 	}
 }
