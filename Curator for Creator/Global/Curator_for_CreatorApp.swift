@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct Curator_for_CreatorApp: App {
-	var userData = UserData(user: User(), store: PreferenceStore())
+	var userData = UserData(user: User(), store: PreferenceStore.shared)
 	
     var body: some Scene {
         WindowGroup {

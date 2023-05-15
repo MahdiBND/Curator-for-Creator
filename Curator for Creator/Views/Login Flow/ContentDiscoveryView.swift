@@ -10,7 +10,7 @@ import SwiftUIMasonry
 
 struct ContentDiscoveryView: View {
 	@Environment(\.dismiss) var dismiss
-	@StateObject var viewModel = ContentDiscoveryVM(store: PreferenceStore())
+	@StateObject var viewModel = ContentDiscoveryVM(store: PreferenceStore.shared)
 	
 	let column = [GridItem(.flexible()),
 				  GridItem(.flexible())]

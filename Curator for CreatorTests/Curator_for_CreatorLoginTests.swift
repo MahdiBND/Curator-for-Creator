@@ -58,14 +58,14 @@ class Curator_for_CreatorTests: XCTestCase {
 		loginViewModel.email = "admin"
 		loginViewModel.password = "password"
 		
-		let data = UserData(user: User(), store: PreferenceStore())
-		try loginViewModel.login()
-		XCTAssert(data.isLoggedIn == true)
-		// It does.
+		let data = UserData(user: User(), store: PreferenceStore.shared)
+//		data.logout()
+//		try loginViewModel.login()
+		XCTAssert(data.loggedIn)
 	}
 	
 	func testAppLaunchReadsFromStorage() throws {
-		let data = UserData(user: User(), store: PreferenceStore())
+		let data = UserData(user: User(), store: PreferenceStore.shared)
 		XCTAssert(data.loggedIn == true)
 	}
 

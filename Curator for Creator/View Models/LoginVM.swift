@@ -17,7 +17,7 @@ class LoginVM<Store>: ObservableObject where Store: PreferenceStorable {
 	@Published var password = ""
 	private var store: Store
 	
-	init(store: Store = PreferenceStore() as! Store) {
+	init(store: Store = PreferenceStore.shared as! Store) {
 		self.store = store
 	}
 	

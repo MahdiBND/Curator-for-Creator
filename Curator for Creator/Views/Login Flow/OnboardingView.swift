@@ -26,7 +26,7 @@ struct OnboardingView: View {
 					.padding(.horizontal, 30)
 			}
 			.sheet(isPresented: $viewModel.showLogin, onDismiss: {
-				if userData.isLoggedIn {
+				if userData.loggedIn {
 					viewModel.showDiscovery = true					
 				}
 			}) {

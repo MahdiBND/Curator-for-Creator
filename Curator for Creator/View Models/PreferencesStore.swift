@@ -14,6 +14,11 @@ protocol PreferenceStorable: ObservableObject {
 }
 
 final class PreferenceStore: PreferenceStorable {
+		// Singleton
+	static var shared = PreferenceStore()
+	
+	private init() {}
+	
 	@Published var favoriteCategoriesPreference: [Category] = value(for: .favoriteCategories, defaultValue: []) {
 		didSet {
 			set(value: favoriteCategoriesPreference, for: .favoriteCategories)

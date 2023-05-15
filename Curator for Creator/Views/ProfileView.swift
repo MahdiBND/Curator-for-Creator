@@ -90,6 +90,6 @@ struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
 			.preferredColorScheme(.dark)
-			.environmentObject(UserData(user: User(), store: PreferenceStore()))
+			.environmentObject(UserData(user: User(), store: PreferenceStore.shared))
     }
 }

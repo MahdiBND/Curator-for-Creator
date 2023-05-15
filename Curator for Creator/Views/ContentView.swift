@@ -11,7 +11,7 @@ struct ContentView: View {
 	@EnvironmentObject var userData: UserData<PreferenceStore>
 	
 	var body: some View {
-		if userData.isLoggedIn {
+		if userData.loggedIn {
 				// -test: change to real user feed.
 			UserFeedView(provider: MockUserFeed())
 				.environmentObject(userData)
@@ -25,6 +25,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
 		ContentView()
-			.environmentObject(UserData(user: User(), store: PreferenceStore()))
+			.environmentObject(UserData(user: User(), store: PreferenceStore.shared))
     }
 }
