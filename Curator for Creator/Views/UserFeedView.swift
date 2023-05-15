@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UserFeedView<Provider>: View where Provider: FeedContentProvidable {
+	@EnvironmentObject var userData: UserData<PreferenceStore>
 	@ObservedObject private var provider: Provider
 	
 	init(provider: Provider = UserFeedVM() as! Provider) {
@@ -27,9 +28,11 @@ struct UserFeedView<Provider>: View where Provider: FeedContentProvidable {
 			.searchable(text: $provider.searchTerm)
 			.toolbar {
 				ToolbarItem(placement: .navigationBarLeading) {
-					Image(systemName: "circle.grid.3x3.fill")
-						.font(.body.weight(.ultraLight))
-						.foregroundColor(.secondary)
+					NavigationLink(destination: ProfileView()) {
+						Image(systemName: "circle.grid.3x3.fill")
+							.font(.body.weight(.ultraLight))
+							.foregroundColor(.secondary)
+					}
 				}
 			}
 		}
